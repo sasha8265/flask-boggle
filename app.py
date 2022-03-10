@@ -17,6 +17,7 @@ def homepage():
     """Show the game board"""
     board = boggle_game.make_board()
     session['board'] = board
+
     return render_template('index.html', board=board)
 
 @app.route('/check-word')
@@ -28,5 +29,4 @@ def check_word():
     res = boggle_game.check_valid_word(board, word)
 
     print(res)
-
     return jsonify({"result":res})
