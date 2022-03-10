@@ -1,0 +1,21 @@
+#boggle-board {
+	justify-content: center;
+	height: 70vh;
+	width: 100%;
+	font-size: 25px;
+	table-layout: fixed;
+	word-wrap: break-word;
+}
+
+h1 {
+	font-family: 'Fredoka', sans-serif;
+	font-weight: bold;
+}
+
+.msg-txt.ok {
+	color: #0d6efd;
+}
+
+.msg-txt.err {
+	color: #dc3545;
+}
