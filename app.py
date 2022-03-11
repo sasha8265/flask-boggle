@@ -28,5 +28,4 @@ def check_word():
     board = session['board']
     res = boggle_game.check_valid_word(board, word)
 
-    print(res)
     return jsonify({"result":res})
