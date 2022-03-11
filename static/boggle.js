@@ -50,6 +50,8 @@ class Game {
         this.showWord(wordVal);
         this.words.add(wordVal);
         this.showMessage(`Added ${wordVal}`, "ok");
+        this.score += wordVal.length;
+        this.showScore();
     }
     $word.val("").focus();
     }
