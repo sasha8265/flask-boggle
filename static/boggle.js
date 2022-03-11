@@ -70,7 +70,28 @@ class Game {
     async countdown() {
         this.time -= 1
         this.showTimer();
+
+        if (this.time === 0) {
+            clearInterval(this.timer);
+            await this.endGame();
+        }
     }
 
+    /* game over - post final score and update message */
+
+    async endGame() {
+        // hide the board form and fade out the timer
+        $("#check-word", this.board).hide();
+        $(".timer").addClass("gameOver");
+        // posts the final score of the game to the route /game-over
+        const resp = await axios.post("/game-over", { score: this.score });
+
+        // check is there is a new record sent back from the data, and send back appropriate message
+        if (resp.data.new_record) {
+            this.showMessage(`New Record: ${this.score}`, "final")
+        } else {
+            this.showMessage(`Final Score: ${this.score}`, "final");
+        }
+    }
 }
 

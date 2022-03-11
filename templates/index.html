@@ -35,22 +35,26 @@
                                 <input type="text" class="form-control" id="word-input" placeholder="word guess" name="word">
                                 <label for="word-input">Word guess</label>
                                 <div class="d-grid gap-2 col-6">
-                                    <button class="btn btn-primary mt-3">Submit</button>
+                                    <button id="submit-btn" class="btn btn-primary mt-3">Submit</button>
                                 </div>
                             </div>
-                            <!-- MESSAGE SECTION -->
-                            <section class="msg-section">
-                                <p class="msg-txt">{{msg}}</p>
-                            </section>
-                            <!-- TIMER SECTION -->
-                            <section class="timer-section mt-5">
-                                <h3 class="timer">Seconds left:
-                                </h3>
-                                <h3 class="display-2 timer" id="timer">00</h3>
-                            </section>
                         </div>
                     </div>
                 </form>
+                <div class="row justify-content-center">
+                    <div class="col-10">
+                <!-- MESSAGE SECTION -->
+                        <section class="msg-section">
+                            <p class="msg-txt">{{msg}}</p>
+                        </section>
+                        <!-- TIMER SECTION -->
+                        <section class="timer-section mt-5">
+                            <h3 class="timer">Seconds left:
+                            </h3>
+                            <h3 class="display-2 timer" id="timer">00</h3>
+                        </section>
+                    </div>
+                </div>
             </div>
             
             <!-- GAME BOARD -->
