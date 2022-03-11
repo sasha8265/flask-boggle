@@ -1,15 +1,22 @@
 class Game {
     /* make a new game at this DOM id */
 
-    constructor(boardId) {
+    constructor(boardId, secs) {
         this.score = 0;
         this.words = new Set();
-        this.board = $("#" + boardId)
+        this.board = $("#" + boardId);
+        
+        this.time = secs;
+        this.showTimer();
+
+        /* every 1000ms countdown 1 */
+        this.timer = setInterval(this.countdown.bind(this), 1000)
+
 
         $("#check-word", this.board).on("submit", this.handleSubmit.bind(this));
     }
 
-    /* Show correctly guest word in list */
+    /* Show correctly guessed word in list */
     showWord(word) {
         $("#words", this.board).append($("<li>", { text: word }));
     }
@@ -22,6 +29,10 @@ class Game {
 
     showScore() {
         $("#score", this.board).text(this.score);
+    }
+
+    showTimer() {
+        $("#timer", this.board).text(this.time);
     }
 
     /* handle word form submit event - check if valid */
@@ -49,12 +60,17 @@ class Game {
     } else {
         this.showWord(wordVal);
         this.words.add(wordVal);
-        this.showMessage(`Added ${wordVal}`, "ok");
+        this.showMessage(`Added ${wordVal}!`, "ok");
         this.score += wordVal.length;
         this.showScore();
     }
     $word.val("").focus();
     }
+
+    async countdown() {
+        this.time -= 1
+        this.showTimer();
+    }
+
 }
 
-const newGame = new Game();

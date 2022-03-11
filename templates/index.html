@@ -42,6 +42,12 @@
                             <section class="msg-section">
                                 <p class="msg-txt">{{msg}}</p>
                             </section>
+                            <!-- TIMER SECTION -->
+                            <section class="timer-section mt-5">
+                                <h3 class="timer">Seconds left:
+                                </h3>
+                                <h3 class="display-2 timer" id="timer">00</h3>
+                            </section>
                         </div>
                     </div>
                 </form>
@@ -97,7 +103,7 @@
     <script src="/static/boggle.js"></script>
 
     <script>
-        let game = new Game("boggle");
+        let game = new Game("boggle", 60);
     </script>
 
     <!-- Bootstrap Scripts  -->
