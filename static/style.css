@@ -12,10 +12,14 @@ h1 {
 	font-weight: bold;
 }
 
-.msg-txt.ok {
+.ok {
 	color: #0d6efd;
 }
 
-.msg-txt.err {
+.err {
 	color: #dc3545;
+}
+
+h4 {
+	margin-bottom: 20px;
 }

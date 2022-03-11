@@ -24,7 +24,7 @@
     </div>
 
     <div class="container-fluid">
-        <div class="row align-items-start justify-content-center">
+        <div class="row align-items-start justify-content-center" id="boggle">
 
             <!-- WORD GUESS FORM -->
             <div class="col-3" id="col-left">
@@ -66,12 +66,9 @@
 
             <!-- SCORE & USED WORDS LIST -->
             <div class="col-3" id="col-right">
-                <div class="row justify-content-center">
+                <div class="row justify-content-center" id="col-right-header">
                     <div class="col-6">
                         <h4>Score:</h4>
-                        <ol id="words">
-                        
-                        </ol>
                     </div>
                     <div class="col-4">
                         <h4 id="score">
@@ -79,6 +76,14 @@
                         </h4>
                     </div>
                     <hr class="col-10">
+                </div>
+                <div class="row justify-content-center" id="word-list-section">
+                    <div class="col-11">
+                        <ol id="words">
+                        
+                        </ol>
+                    </div>
+
                 </div>
             </div>
 
@@ -90,6 +95,10 @@
     <script src="http://unpkg.com/jquery"></script>
     <script src="https://unpkg.com/axios@0.19.0/dist/axios.js"></script>
     <script src="/static/boggle.js"></script>
+
+    <script>
+        let game = new Game("boggle");
+    </script>
 
     <!-- Bootstrap Scripts  -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"

@@ -17,7 +17,7 @@ class Game {
     /* Display Status Message */
     showMessage(msg, cls) {
         $(".msg-txt", this.board)
-            .text(msg).removeClass().addClass(`msg ${cls}`);
+            .text(msg).removeClass().addClass(`msg-txt ${cls}`);
     }
 
     showScore() {
@@ -30,10 +30,8 @@ class Game {
     const $word = $("#word-input", this.board);
 
     let wordVal = $word.val();
-
     // If input is empty, return
     if (!wordVal) return;
-
     // if word submitted has already been found on board, show message with the error class
     if (this.words.has(wordVal)) {
         this.showMessage(`Already found ${wordVal}`, "err");
@@ -46,18 +44,15 @@ class Game {
 
     if (res.data.result === "not-word") {
         this.showMessage(`${wordVal} is not a valid word`, "err");
-    }
-    else if (res.data.result === "not-on-board") {
+    } else if (res.data.result === "not-on-board") {
         this.showMessage(`${wordVal} is not on this board`, "err");
-    }
-    else {
+    } else {
         this.showWord(wordVal);
         this.words.add(wordVal);
         this.showMessage(`Added ${wordVal}`, "ok");
     }
     $word.val("").focus();
-
     }
-    
 }
 
+const newGame = new Game();
