@@ -5,14 +5,13 @@ class Game {
         this.score = 0;
         this.words = new Set();
         this.board = $("#" + boardId);
-        
         this.time = secs;
         this.showTimer();
 
         /* every 1000ms countdown 1 */
         this.timer = setInterval(this.countdown.bind(this), 1000)
 
-
+        // listens for submit event and runs handleSubmit()
         $("#check-word", this.board).on("submit", this.handleSubmit.bind(this));
     }
 
@@ -27,10 +26,12 @@ class Game {
             .text(msg).removeClass().addClass(`msg-txt ${cls}`);
     }
 
+    /* Displays current score */ 
     showScore() {
         $("#score", this.board).text(this.score);
     }
 
+    /* Displays Timer */
     showTimer() {
         $("#timer", this.board).text(this.time);
     }
@@ -49,7 +50,7 @@ class Game {
         return;
     }
 
-    //Check server to see if word is valid
+    /* Check server to see if word is valid and submit appropriate message */
     const res = await axios.get('/check-word', { params: { word: wordVal } });
     console.log(res);
 
@@ -64,13 +65,16 @@ class Game {
         this.score += wordVal.length;
         this.showScore();
     }
+    // Clear input
     $word.val("").focus();
     }
 
+    /* Counts down starting at set time and reducing by 1 */
     async countdown() {
         this.time -= 1
         this.showTimer();
 
+        // When timer reaches 0, stops timer and runs endGame()
         if (this.time === 0) {
             clearInterval(this.timer);
             await this.endGame();
@@ -78,7 +82,6 @@ class Game {
     }
 
     /* game over - post final score and update message */
-
     async endGame() {
         // hide the board form and fade out the timer
         $("#check-word", this.board).hide();
